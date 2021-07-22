@@ -57,8 +57,8 @@ function onChangingPositionThemeSwitchToggle() {
 
 if (localStorage.getItem('Theme') === 'DARK') {
   refs.themeSwitchToggle.checked = true;
-
-  refs.themeSwitchToggle.style.transform = null;
+  /*  */
+  //refs.themeSwitchToggle.style.transform = null;
 
   /* Удаление класса light-theme */
   refs.body.classList.remove('light-theme');
