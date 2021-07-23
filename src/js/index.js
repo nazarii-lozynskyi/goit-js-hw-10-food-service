@@ -13,10 +13,18 @@ const refs = {
   menu: document.querySelector('.menu'),
 };
 
+console.log(localStorage.getItem('Theme'));
+
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
+
+/* При первой загрузке страницы, у боди должен быть класс light-theme. */
+
+if (localStorage.getItem('Theme') === null) {
+  refs.body.classList.add('light-theme');
+}
 
 /* При изменении темы, добавляется на элемент body класс light-theme или dark-theme. */
 refs.themeSwitchToggle.addEventListener(
@@ -57,14 +65,20 @@ function onChangingPositionThemeSwitchToggle() {
 
 if (localStorage.getItem('Theme') === 'DARK') {
   refs.themeSwitchToggle.checked = true;
-  /*  */
-  //refs.themeSwitchToggle.style.transform = null;
 
   /* Удаление класса light-theme */
   refs.body.classList.remove('light-theme');
 
   /* Добавляется на элемент body класс dark-theme */
   refs.body.classList.add('dark-theme');
+} else if (localStorage.getItem('Theme') === 'LIGHT') {
+  refs.themeSwitchToggle.checked = false;
+
+  /* Удаление класса light-theme */
+  refs.body.classList.remove('dark-theme');
+
+  /* Добавляется на элемент body класс dark-theme */
+  refs.body.classList.add('light-theme');
 }
 
 /*Создание и рендер разметки по массиву данных menu из menu.json и предоставленному шаблону.*/
